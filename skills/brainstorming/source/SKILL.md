@@ -32,6 +32,10 @@ maturity: stable
 platform_specific:
   claude-code:
     allowed_tools: [Read, Write]
+  cursor:
+    description: "Brainstorm: turn ideas into approved spec via Socratic dialogue before any implementation"
+  codex:
+    description: Use before any creative work to turn ideas into approved spec
 ---
 
 # Brainstorming — Ideas → Designs

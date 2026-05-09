@@ -11,7 +11,7 @@ always_apply = false
 
 [permissions]
 read = true
-edit = false
+edit = true
 shell = []
 
 [content]

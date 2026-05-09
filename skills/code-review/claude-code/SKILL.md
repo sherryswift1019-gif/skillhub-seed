@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements. Dispatch a fresh subagent reviewer.
+description: Use when completing tasks, implementing major features, or before merging to verify work meets requirements. Dispatch a fresh subagent reviewer with crafted context.
 license: MIT
 allowed-tools: [Read, Bash]
 ---

@@ -1,20 +1,19 @@
 [plugin]
 name = "tdd-strict"
 version = "1.0.0"
-description = "Use when implementing any feature or bugfix, before writing implementation code. Enforces RED-GREEN-REFACTOR."
+description = "Use when implementing any feature or bugfix, before writing implementation code (TDD strict)"
 license = "MIT"
-authors = ["Jesse Vincent (upstream)", "SkillHub contributors"]
+authors = ["SkillHub contributors"]
 
 [triggers]
-keywords = ["test", "tdd", "test-driven"]
+keywords = ["test", "tdd", "test-driven", "测试驱动"]
 file_patterns = ["**/*.test.*", "**/*_test.*", "**/test_*.py"]
 always_apply = false
 
 [permissions]
 read = true
 edit = true
-shell = ["npm test", "pytest", "go test", "cargo test"]
+shell = ["npm test", "pytest", "go test", "cargo test", "git", "grep"]
 
 [content]
-# Skill 主体内容在相邻文件 SKILL.md
 file = "SKILL.md"

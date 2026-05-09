@@ -32,6 +32,10 @@ maturity: experimental
 platform_specific:
   claude-code:
     allowed_tools: [Read, Edit, Bash, Grep]
+  cursor:
+    description: "Refactor: structural change without behavior change. One smell, one move, tests green throughout"
+  codex:
+    description: Refactor without behavior change. One step at a time, tests green
 ---
 
 # Refactor — Safe Structural Change

@@ -32,6 +32,10 @@ maturity: stable
 platform_specific:
   claude-code:
     allowed_tools: [Read, Bash]
+  cursor:
+    description: Dispatch a code reviewer subagent with crafted context (not session history)
+  codex:
+    description: "Code review: dispatch a fresh subagent reviewer before merge"
 ---
 
 # Code Review (Subagent-Dispatched)

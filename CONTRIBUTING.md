@@ -13,12 +13,33 @@
 Phase 0 我们只接受**已在某个 Harness 已经被验证有效**的 Skill 转译。流程：
 
 1. Fork
-2. 在 `skills/<your-skill-name>/source/SKILL.md` 写 IR 源版本（参考 `skills/tdd-strict/source/SKILL.md`）
-3. 至少转译到 1 个目标 Harness（理想是 3 个全做）
-4. 提 PR，附上：
+2. `mkdir -p skills/<your-skill-name>/{source,claude-code,cursor,codex}`
+3. 在 `skills/<your-skill-name>/source/SKILL.md` 写 IR 源版本（参考 `skills/tdd-strict/source/SKILL.md`），包含：
+   - 完整 frontmatter（name / version / description / license / triggers / compatibility / tags / category / maturity）
+   - 可选：`platform_specific.<harness>.description` 给某个 Harness 单独写更短/更针对的描述
+   - 可选：`platform_specific.claude-code.allowed_tools` 等 Harness 特定字段
+   - 正文（Markdown）
+4. **跑生成脚本**：
+   ```bash
+   pip3 install pyyaml  # 一次性
+   python3 tools/generate_harness_versions.py
+   ```
+   脚本自动扫描 `skills/*/source/SKILL.md`，为每个 Skill 生成 3 Harness 的 4 个文件
+5. 至少在 1 个目标 Harness 上手动测试（理想是 3 个全测）
+6. 提 PR，附上：
    - License 声明（必须 MIT 兼容）
-   - 上游来源（如有）
+   - 上游来源（如有，写 `upstream:` 字段）
    - 你测试过的 Harness 列表
+
+### 工具说明
+
+`tools/generate_harness_versions.py`：
+- `python3 tools/generate_harness_versions.py` — 全部生成
+- `... --skill <name>` — 只生成某个 skill
+- `... --check` — dry-run，不写
+- `... -v` — 详细输出每个文件
+
+**重要**：harness 子目录下的文件（claude-code/ / cursor/ / codex/）是**生成产物**，不要手动编辑。所有改动应该在 `source/SKILL.md`，然后跑脚本同步。手动编辑的话下次跑脚本会被覆盖。
 
 ## 想加新 Harness 适配？
 

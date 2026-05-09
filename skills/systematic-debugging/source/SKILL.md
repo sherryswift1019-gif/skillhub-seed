@@ -32,6 +32,10 @@ maturity: stable
 platform_specific:
   claude-code:
     allowed_tools: [Read, Edit, Bash, Grep]
+  cursor:
+    description: "Systematic debugging: 4-phase root cause process before any fix"
+  codex:
+    description: Use for any bug/test failure before proposing fixes
 ---
 
 # Systematic Debugging

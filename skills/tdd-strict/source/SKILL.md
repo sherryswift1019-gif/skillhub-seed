@@ -30,11 +30,15 @@ category: testing
 maturity: stable
 
 platform_specific:
+  claude-code:
+    description: Use when implementing any feature or bugfix, before writing implementation code. Enforces RED-GREEN-REFACTOR.
+    allowed_tools: [Read, Edit, Bash]
   cursor:
+    description: Use when implementing any feature or bugfix, before writing implementation code (TDD strict, RED-GREEN-REFACTOR)
     globs: ["**/*.test.*", "**/*_test.*", "**/test_*.py"]
     alwaysApply: false
-  claude-code:
-    allowed_tools: [Read, Edit, Bash]
+  codex:
+    description: Use when implementing any feature or bugfix, before writing implementation code (TDD strict)
 ---
 
 # TDD Strict — Test-Driven Development
