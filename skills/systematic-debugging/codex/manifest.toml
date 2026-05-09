@@ -1,0 +1,18 @@
+[plugin]
+name = "systematic-debugging"
+version = "1.0.0"
+description = "Use for any bug/test failure before proposing fixes"
+license = "MIT"
+authors = ["SkillHub contributors"]
+
+[triggers]
+keywords = ["bug", "debug", "error", "test failure", "调试", "排查"]
+always_apply = false
+
+[permissions]
+read = true
+edit = true
+shell = ["npm test", "pytest", "go test", "cargo test", "git", "grep"]
+
+[content]
+file = "SKILL.md"

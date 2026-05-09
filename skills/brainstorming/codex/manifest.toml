@@ -1,0 +1,18 @@
+[plugin]
+name = "brainstorming"
+version = "1.0.0"
+description = "Use before any creative work to turn ideas into approved spec"
+license = "MIT"
+authors = ["SkillHub contributors"]
+
+[triggers]
+keywords = ["new feature", "build", "design", "想法", "新功能"]
+always_apply = false
+
+[permissions]
+read = true
+edit = false
+shell = []
+
+[content]
+file = "SKILL.md"

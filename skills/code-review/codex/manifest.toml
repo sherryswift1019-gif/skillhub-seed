@@ -1,0 +1,18 @@
+[plugin]
+name = "code-review"
+version = "1.0.0"
+description = "Code review: dispatch a fresh subagent reviewer before merge"
+license = "MIT"
+authors = ["SkillHub contributors"]
+
+[triggers]
+keywords = ["review", "merge", "PR", "审查"]
+always_apply = false
+
+[permissions]
+read = true
+edit = false
+shell = []
+
+[content]
+file = "SKILL.md"

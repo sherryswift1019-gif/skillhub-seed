@@ -1,0 +1,97 @@
+---
+name: code-review
+description: Code review: dispatch a fresh subagent reviewer before merge
+---
+
+# Code Review (Subagent-Dispatched)
+
+Dispatch a code reviewer subagent to catch issues before they cascade. The reviewer gets precisely crafted context for evaluation — never your session's history. This keeps the reviewer focused on the work product, not your thought process, and preserves your own context for continued work.
+
+**Core principle:** Review early, review often.
+
+## When to Request Review
+
+**Mandatory:**
+- After each task in subagent-driven development
+- After completing a major feature
+- Before merge to main
+
+**Optional but valuable:**
+- When stuck (fresh perspective)
+- Before refactoring (baseline check)
+- After fixing a complex bug
+
+## How to Request
+
+### 1. Get git SHAs
+
+```bash
+BASE_SHA=$(git rev-parse HEAD~1)   # or origin/main
+HEAD_SHA=$(git rev-parse HEAD)
+```
+
+### 2. Dispatch reviewer subagent
+
+Use the Task / Agent tool (general-purpose). Fill the template:
+
+- `{DESCRIPTION}` — brief summary of what you built
+- `{PLAN_OR_REQUIREMENTS}` — what it should do (link to plan / spec / issue)
+- `{BASE_SHA}` — starting commit
+- `{HEAD_SHA}` — ending commit
+
+The reviewer:
+- Reads the diff between BASE and HEAD
+- Reads files in their full context (not just the diff)
+- Compares against the requirements
+- Reports issues by severity: **Critical / Important / Minor**
+
+### 3. Act on feedback
+
+| Severity | Action |
+|---|---|
+| Critical | Fix immediately, do not proceed |
+| Important | Fix before proceeding to next task |
+| Minor | Note for later cleanup |
+
+If reviewer is wrong: push back with technical reasoning, show code/tests proving it works.
+
+## Example
+
+```
+[Just completed Task 2: Add verification function]
+
+BASE_SHA=$(git log --oneline | grep "Task 1" | head -1 | awk '{print $1}')
+HEAD_SHA=$(git rev-parse HEAD)
+
+[Dispatch reviewer]
+  DESCRIPTION:        Added verifyIndex() and repairIndex() with 4 issue types
+  PLAN:               Task 2 from docs/plans/deployment-plan.md
+  BASE: a7981ec       HEAD: 3df7661
+
+[Reviewer returns]
+  Strengths: Clean architecture, real tests
+  Issues:
+    Important: Missing progress indicators
+    Minor:    Magic number (100) for reporting interval
+  Assessment: Ready to proceed (after fix)
+
+[You]: Fix progress indicators → continue to Task 3
+```
+
+## Integration
+
+- **Subagent-Driven Development**: review after EACH task. Catch issues before they compound
+- **Plan Execution**: review at natural checkpoints
+- **Ad-hoc Development**: review before merge or when stuck
+
+## Red Flags
+
+**Never:**
+- Skip review because "it's simple"
+- Ignore Critical issues
+- Proceed with unfixed Important issues
+- Argue with valid technical feedback
+
+---
+
+> **Source:** Adapted from [obra/superpowers requesting-code-review](https://github.com/obra/superpowers/tree/main/skills/requesting-code-review) (MIT, © Jesse Vincent and contributors). The companion `code-reviewer.md` template lives upstream.

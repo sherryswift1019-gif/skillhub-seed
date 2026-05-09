@@ -1,0 +1,18 @@
+[plugin]
+name = "refactor"
+version = "1.0.0"
+description = "Refactor without behavior change. One step at a time, tests green"
+license = "MIT"
+authors = ["SkillHub contributors"]
+
+[triggers]
+keywords = ["refactor", "rename", "extract", "restructure", "重构"]
+always_apply = false
+
+[permissions]
+read = true
+edit = true
+shell = ["npm test", "pytest", "go test", "cargo test", "git", "grep"]
+
+[content]
+file = "SKILL.md"

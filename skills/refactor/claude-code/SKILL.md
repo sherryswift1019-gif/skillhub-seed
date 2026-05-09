@@ -1,0 +1,129 @@
+---
+name: refactor
+description: Use when changing code structure without changing behavior. Keeps tests green, makes one structural change at a time, defers premature abstractions.
+license: MIT
+allowed-tools: [Read, Edit, Bash, Grep]
+---
+
+# Refactor — Safe Structural Change
+
+## The Iron Law
+
+```
+TESTS MUST BE GREEN BEFORE, DURING, AND AFTER EACH STEP
+```
+
+Refactoring is changing code **structure** without changing **behavior**. If a refactor changes behavior, it's not a refactor — it's a rewrite (and needs a failing test first per TDD).
+
+## When to Use
+
+**Yes:**
+- Code is hard to read but works
+- Duplication building up across 3+ places
+- Test setup is huge (signal: design too complicated)
+- A function does 3+ things you can name
+
+**Not yet (refactor later):**
+- You haven't shipped yet (don't pre-optimize structure)
+- Tests are red (fix tests first)
+- You don't have tests at all (write them first, then refactor)
+- A future feature *might* need it (YAGNI)
+
+**Never:**
+- "While I'm here" cleanups during a feature/bug PR (do them in a separate PR)
+- Refactor that requires deleting / disabling tests to "pass" (that's behavior change)
+
+## Process — One Structural Change at a Time
+
+### 1. Verify Baseline Green
+
+```bash
+npm test  # or pytest, go test, cargo test, etc.
+```
+
+If anything is failing, **STOP**. Fix tests first.
+
+### 2. Identify ONE Smell
+
+Pick the **smallest** structural smell. Don't bundle.
+
+| Smell | Move |
+|---|---|
+| Long function (50+ lines, multiple responsibilities) | Extract method |
+| Repeated 3+ times across files | Extract function or shared module |
+| Unclear name | Rename in place |
+| Class that doesn't model anything cohesive | Inline / split |
+| Deep nesting (4+ levels) | Early returns / guard clauses |
+| Conditional dispatching on type | Polymorphism (only if 3+ branches) |
+
+If you can't name the smell in one sentence, you don't have a refactoring problem — you have a design question. Brainstorm first.
+
+### 3. Make the Change
+
+- Apply ONE move
+- Don't introduce abstractions you'd need to invent (premature)
+- Don't change names of things outside the immediate scope
+- Don't reformat unrelated code
+
+### 4. Run Tests
+
+```bash
+npm test
+```
+
+Must be green. **If red:**
+- Did the test catch a real behavior change you accidentally introduced? Revert and rethink
+- Is the test brittle (depending on internal structure not behavior)? Fix the test, then continue refactoring
+
+### 5. Commit
+
+One atomic refactor commit:
+
+```
+refactor: extract validateEmail from registerUser
+
+Moves email validation into its own function so it can be reused
+by passwordReset and emailUpdate (added in next PR).
+No behavior change.
+```
+
+### 6. Repeat
+
+Next smell, next commit. **Don't bundle multiple refactors into one commit.**
+
+## Red Flags — STOP
+
+- Tests went red and you're "going to fix them after"
+- You're "improving" code unrelated to the refactor in scope
+- You're inventing an abstraction for one current caller (1 caller ≠ abstraction)
+- Refactor + bugfix + new feature in one PR
+- "Massive refactoring needed" mid-task
+
+## Anti-Patterns
+
+| Trap | Why bad | Instead |
+|---|---|---|
+| Extract for 1 caller | Premature abstraction | Inline. Extract when you have 3 callers. |
+| Rename across the whole repo at once | Hard to review, breaks others' branches | Localize rename, deprecate old name with TODO |
+| "Better" name with no specific reason | Subjective churn | Only rename when current name is misleading or wrong |
+| Pull "common" code into utils.ts | Dumping ground emerges | Each shared module needs a single named purpose |
+| Split a class because it "feels too big" | Vague | Split when you can name 2 separate responsibilities |
+
+## When 3+ Refactors Don't Help
+
+If you've done 3 refactors and the code still feels wrong: the **design** is wrong, not the structure. Stop refactoring and brainstorm a redesign with your human partner.
+
+## Verification Checklist
+
+Before merging a refactor:
+
+- [ ] All tests green (run them, don't trust git CI cache)
+- [ ] No behavior change (line-by-line diff confirms only moves/renames)
+- [ ] Commit message names the smell and the move (not just "refactor")
+- [ ] One refactor per commit; one logical refactor per PR
+- [ ] No new dependencies, no formatting churn, no unrelated changes
+- [ ] If you renamed something public, downstream consumers updated
+
+---
+
+> **Source:** Original to skillhub-seed. Distilled from common refactoring conventions (Fowler, Beck) plus what works in AI-coding-agent contexts.
