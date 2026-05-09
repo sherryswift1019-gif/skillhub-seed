@@ -15,7 +15,7 @@ I've been using both Claude Code and Cursor depending on the task, and every tim
 
 So I tried something: I took 5 of the most popular Skills and manually transcoded each to **Claude Code, Cursor, and Codex** formats. One canonical "source" with full metadata, and three drop-in versions that work natively in each tool.
 
-Repo: **https://github.com/<your-handle>/skillhub-seed**
+Repo: **https://github.com/sherryswift1019-gif/skillhub-seed**
 
 Skills included (4 from obra/superpowers, MIT-attributed; 1 original):
 - `tdd-strict` — RED-GREEN-REFACTOR enforcement
@@ -47,7 +47,7 @@ Different AI coding agents (Claude Code, Cursor, Codex) all have plugin/skill me
 
 I'm validating whether a cross-platform skill marketplace is worth building. As a Phase 0 test, I manually transcoded 5 popular skills (4 derived from obra/superpowers, 1 original) into native formats for Claude Code, Cursor, and Codex.
 
-Repo: **https://github.com/<your-handle>/skillhub-seed**
+Repo: **https://github.com/sherryswift1019-gif/skillhub-seed**
 
 Each skill has 4 versions:
 - `source/SKILL.md` — proposed cross-platform IR (Markdown + YAML frontmatter, mostly Markdown body)
@@ -72,7 +72,7 @@ If 100+ people star or 10+ leave substantive comments in 2 weeks, I'll build the
 > 
 > Hey folks, I made a small experiment: took 5 famous AI coding Skills (TDD, brainstorming, systematic-debugging, code-review, refactor) and transcoded each to work natively on Claude Code, Cursor, AND Codex. 
 > 
-> Repo: https://github.com/<your-handle>/skillhub-seed
+> Repo: https://github.com/sherryswift1019-gif/skillhub-seed
 > 
 > Looking for feedback before I decide whether to build a cross-platform Skill marketplace ("SkillHub"). If the cross-tool problem is real for you, please drop a comment in the repo or here. If it's not, that saves me 6 months of building the wrong thing 🙃
 

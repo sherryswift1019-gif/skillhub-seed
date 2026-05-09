@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 一般讨论 / General discussion
+    url: https://github.com/sherryswift1019-gif/skillhub-seed/discussions
+    about: 想法、提问、show-and-tell — 用 Discussions 而不是 Issue
+  - name: 📖 IR 规范反馈 / IR spec feedback
+    url: https://github.com/sherryswift1019-gif/skillhub-seed/blob/main/docs/ir-spec.md
+    about: 看一下 IR v0.1 草稿，欢迎拍砖

@@ -1,0 +1,68 @@
+name: 跨平台需求反馈 / Cross-platform Skill request
+description: 告诉我们你想在哪个 Harness 上看到哪个 Skill，或哪些 Skill 的跨平台支持对你最有价值
+title: "[反馈] "
+labels: ["phase-0-feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        感谢花时间反馈。Phase 0 的核心问题就是「跨 Harness Skill 真的有需求吗」，您的回答直接决定了是否继续这个项目。
+
+        Thanks for taking time to give feedback. Phase 0's core question is whether cross-Harness Skills are genuinely needed — your answers directly drive go/no-go on this project.
+
+  - type: checkboxes
+    id: harnesses-used
+    attributes:
+      label: 你目前在用哪些 AI Coding Agent？/ Which AI coding agents do you use?
+      description: 多选 / multiple choice
+      options:
+        - label: Claude Code
+        - label: Cursor
+        - label: Codex CLI / App
+        - label: Gemini CLI
+        - label: GitHub Copilot CLI
+        - label: OpenCode
+        - label: Aider / Continue / Roo / 其他
+
+  - type: dropdown
+    id: rewrite-experience
+    attributes:
+      label: 你是否为了换工具重写过 Skill？/ Have you rewritten a Skill for a different tool?
+      options:
+        - "重写过 1-2 次 / Yes, 1-2 times"
+        - "重写过 3+ 次 / Yes, 3+ times"
+        - "想做但放弃了 / Wanted to but gave up"
+        - "没遇到这个问题 / Never had this problem"
+        - "我自己不写 Skill / I don't write Skills"
+      multiple: false
+    validations:
+      required: true
+
+  - type: textarea
+    id: which-skills
+    attributes:
+      label: 你最希望先支持哪些 Skill？/ Which Skills do you want cross-platform first?
+      description: 列名字、链接、或简单描述用途。/ Names, links, or brief description of what they do.
+      placeholder: |
+        e.g.
+        - obra/superpowers TDD
+        - 我自己写的 React component generator
+        - 公司内部的 i18n review skill
+
+  - type: dropdown
+    id: willingness-to-pay
+    attributes:
+      label: 「写一次跑遍所有 Harness」对你值多少钱？/ What would write-once-run-everywhere be worth to you?
+      options:
+        - "免费 / Free"
+        - "一次付费 < $20 / One-time < $20"
+        - "$5-10/月订阅 / $5-10 monthly"
+        - "$10-30/月订阅 / $10-30 monthly"
+        - "企业版 $1000+/年 / Enterprise $1k+/year"
+      multiple: false
+
+  - type: textarea
+    id: other
+    attributes:
+      label: 其他想说的 / Anything else?
+      placeholder: 格式建议 / 痛点 / 已有相似产品 / 反对意见 / etc.

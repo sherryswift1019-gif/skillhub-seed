@@ -10,7 +10,7 @@
 
 **示范**：本仓库把 5 个 superpowers 明星 Skill 转译到 Claude Code / Cursor / Codex 三平台，每个版本都能直接装上用。
 
-**目的**：测试需求 — 如果你想在其他 Harness 上看到这些 Skill，请到 [Discussions](#) 留言/给 Issue / star 仓库。
+**目的**：测试需求 — 如果你想在其他 Harness 上看到这些 Skill，请到 [Discussions](https://github.com/sherryswift1019-gif/skillhub-seed/discussions) 留言/给 Issue / star 仓库。
 
 ---
 
@@ -79,7 +79,7 @@ cp skills/tdd-strict/codex/* ~/.codex/plugins/tdd-strict/
 3. 如果有「写一次跑所有 Harness」的工具，你愿意付钱吗？多少？
 4. 你最希望先支持哪些 Harness？
 
-请到 [Discussions](#) 留言，或开 Issue。Star 仓库 = 投票。
+请到 [Discussions](https://github.com/sherryswift1019-gif/skillhub-seed/discussions) 留言，或开 Issue。Star 仓库 = 投票。
 
 ---
 

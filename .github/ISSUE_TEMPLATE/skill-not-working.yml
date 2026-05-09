@@ -1,0 +1,73 @@
+name: Skill 在我的 Harness 上不工作 / Skill not working on my Harness
+description: 报告某个 Skill 在某个 Harness 上的兼容/格式/触发问题
+title: "[bug] <skill> on <harness>: "
+labels: ["bug", "harness-compat"]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: 哪个 Skill？/ Which Skill?
+      options:
+        - tdd-strict
+        - brainstorming
+        - systematic-debugging
+        - code-review
+        - refactor
+      multiple: false
+    validations:
+      required: true
+
+  - type: dropdown
+    id: harness
+    attributes:
+      label: 哪个 Harness？/ Which Harness?
+      options:
+        - Claude Code
+        - Cursor
+        - Codex
+        - Gemini CLI
+        - Copilot CLI
+        - OpenCode
+        - 其他 / Other
+      multiple: false
+    validations:
+      required: true
+
+  - type: input
+    id: harness-version
+    attributes:
+      label: Harness 版本 / Harness version
+      placeholder: "e.g., Claude Code 2.3, Cursor 0.45"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 期望行为 / Expected
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际发生 / Actual
+      description: 报错截图 / 输出 / 触发不了 / 触发但行为错 / etc.
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤 / Steps to reproduce
+      placeholder: |
+        1. cp skills/tdd-strict/cursor/tdd-strict.mdc .cursor/rules/
+        2. 重启 Cursor
+        3. 写一个 .test.ts 文件
+        4. ...
+
+  - type: textarea
+    id: env
+    attributes:
+      label: 环境 / Environment
+      placeholder: macOS 14.5 / Node 20.10 / etc.
