@@ -1,12 +1,12 @@
 [plugin]
-name = "code-review"
+name = "verification-before-completion"
 version = "1.0.0"
-description = "Code review: dispatch a fresh subagent reviewer before merge"
+description = "Run verification command before claiming completion. Evidence before assertions."
 license = "MIT"
 authors = ["SkillHub contributors"]
 
 [triggers]
-keywords = ["review", "merge", "PR", "审查"]
+keywords = ["complete", "done", "passing", "fixed", "verify", "完成", "通过", "修好"]
 always_apply = false
 
 [permissions]

@@ -169,9 +169,11 @@ def render_codex_toml(meta: dict) -> str:
         "edit", "Edit" in cc_tools or "Write" in cc_tools
     )
     has_bash = "Bash" in cc_tools or "Grep" in cc_tools
+    # Shell access depends on Bash, not Edit — read-only verification skills
+    # (e.g. running tests/lint) legitimately need shell without write.
     shell_default = (
         ["npm test", "pytest", "go test", "cargo test", "git", "grep"]
-        if has_bash and can_edit
+        if has_bash
         else []
     )
     shell = codex_specific.get("shell", shell_default)

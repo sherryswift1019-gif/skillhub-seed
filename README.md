@@ -22,6 +22,7 @@
 | `brainstorming` | obra/superpowers (MIT) | 用 Socratic 对话把模糊想法变成 spec |
 | `systematic-debugging` | obra/superpowers (MIT) | 4 阶段根因分析，避免 patch-and-pray |
 | `code-review` | obra/superpowers (MIT) | 派子 agent 做严格代码审查 |
+| `verification-before-completion` | obra/superpowers (MIT) | 在声称完成/通过前必须跑验证命令 |
 | `refactor` | 本仓库原创 (MIT) | 在保持测试绿的前提下安全重构 |
 
 ---
@@ -99,7 +100,7 @@ cp skills/tdd-strict/codex/* ~/.codex/plugins/tdd-strict/
 
 本仓库 [MIT License](LICENSE)。
 
-四个 Skill（tdd-strict / brainstorming / systematic-debugging / code-review）的内容源自 [obra/superpowers](https://github.com/obra/superpowers)（Jesse Vincent 维护，MIT），按 IR 格式重新组织以适配各 Harness。每个 skill 文件头都标注了 upstream 来源。
+5 个 Skill（tdd-strict / brainstorming / systematic-debugging / code-review / verification-before-completion）的内容源自 [obra/superpowers](https://github.com/obra/superpowers)（Jesse Vincent 维护，MIT），按 IR 格式重新组织以适配各 Harness。每个 skill 文件头都标注了 upstream 来源。
 
 `refactor` 是本仓库原创。
 
